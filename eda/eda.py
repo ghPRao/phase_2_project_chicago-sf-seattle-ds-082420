@@ -21,11 +21,12 @@ def pad_zeros_tokey(df):
 
 #Combine Major+Minor in one column'Merged_Key' and drop Major, Minor columns
 def merge_keys (df):
-    df['Major'].map(str) + df['Minor'].map(str)
+    df['Merged_Key'] = df['Major'].map(str) + df['Minor'].map(str)
     df_t = df.pop('Merged_Key')
     df.insert(0, 'Merged_Key', df_t)
     del df['Major'], df['Minor']
     return df
+
     
 # Data File: EXTR_RPSale.csv 
 #Table: EXTR_RPSale 
@@ -172,3 +173,15 @@ def consolidate_data(year=2019, create=False):
     return df_merged
         
 
+# using label encoding, takes the categorical columns in a dataframe and turn them into numeric ones and returns a dataframe
+# inputs: a dataframe, and a boolean keep
+# setting it to True will keep the old categorical column, setting it to False will delete it
+
+def dummying_df(df, keep = True):
+    cols = df.select_dtypes(include = 'object').columns
+    label_encoder = LabelEncoder()
+    for col in cols:
+        status_labels = label_encoder.fit_transform(df[f"{col}"])
+        df[f"{col}_Encoded"] = status_labels
+        if keep == False: df.drop(columns = [col], inplace = True, errors = 'ignore')
+    return df
