@@ -3,10 +3,9 @@ import pandas as pd
 import numpy as np
 import sys
 
-# A function named parse_2019(df) that takes a dataframe as the input.
+# A function named parse_year(df, year) that takes a dataframe as the input.
 # It takes in a dataframe, looks for relevant columns, and then keeps the rows that
 # are in the year 2019.
-
 def parse_year(df, year):
     if 'DocumentDate' in df.columns:
         df = df[pd.to_datetime(df['DocumentDate']).dt.year == year ]
@@ -36,7 +35,7 @@ def merge_keys (df):
 # Filters:
 #     1) Select only specified 'year' data
 #.    2) If 'SalesPrice' is 0, drop the records
-def get_sales(year):
+def get_sales(year=2019):
     df = pd.read_csv("./data/EXTR_RPSale.csv", encoding = "ISO-8859-1", low_memory=False)
 
     # Filter the following columns from EXTR_RPsale table
@@ -170,8 +169,8 @@ def consolidate_data(year=2019, create=False):
         #Merge df_sales, df_parcels, df_resbldg on keys Major and Minor
         print("Merging....")
         df_merged = df_sales
-        df_merged = df_merged.merge(df_parcels, right_on=['Merged_Key'], left_on=['Merged_Key'], how='left')
-        df_merged = df_merged.merge(df_resbldg, right_on=['Merged_Key'], left_on=['Merged_Key'], how='left')          
+        df_merged = df_merged.merge(df_parcels, right_on=['Merged_Key'], left_on=['Merged_Key'], how='inner')
+        df_merged = df_merged.merge(df_resbldg, right_on=['Merged_Key'], left_on=['Merged_Key'], how='inner')          
         print("After Merging files.csv: ", df_parcels.shape)   
         print("Created merged file...s")
         df_merged.to_csv ('./data/consolidated.csv', index = False, header=True)
