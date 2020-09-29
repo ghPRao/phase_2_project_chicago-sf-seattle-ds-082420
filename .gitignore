@@ -2,6 +2,8 @@
 *.csv
 *.zip
 *.csv.gz
+*.gif
+*.yml
 
 # MacOS file
 .DS_Store

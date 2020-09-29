@@ -27,7 +27,7 @@ def get_data (create_csv):
 #       'PrincipalUse', 'PropertyClass']
 
 def get_sales():
-    df_rp_sales = pd.read_csv('data/EXTR_RPSale.csv', encoding = "ISO-8859-1", low_memory=False)
+    df_rp_sales = parse_2019(pd.read_csv('data/EXTR_RPSale.csv', encoding = "ISO-8859-1", low_memory=False))
     print("Before Filer EXTR_RPSale.csv: ", df_rp_sales.shape)
 
     # Filter the following columns from EXTR_RPsale table
@@ -49,7 +49,7 @@ def get_sales():
 #       'OtherNuisances']
 
 def get_parcels():
-    df_parcel = pd.read_csv('../data/EXTR_Parcel.csv', encoding = "ISO-8859-1", low_memory=False)
+    df_parcel = parse_2019(pd.read_csv('data/EXTR_Parcel.csv', encoding = "ISO-8859-1", low_memory=False))
     print("Before EXTR_Parcel.csv: ", df_parcel.shape)
     df_parcel.columns
     
@@ -73,7 +73,7 @@ def get_parcels():
 #       'FpMultiStory', 'YrRenovated', 'PcntComplete'],
 
 def get_resBldg():
-    df_res_bldg = pd.read_csv('../data/EXTR_ResBldg.csv', encoding = "ISO-8859-1", low_memory=False)
+    df_res_bldg = parse_2019(pd.read_csv('data/EXTR_ResBldg.csv', encoding = "ISO-8859-1", low_memory=False))
     print("EXTR_ResBldg.csv: ", df_res_bldg.shape)
 
     # Filter the following columns from EXTR_ResBldg table
@@ -87,8 +87,22 @@ def get_resBldg():
 #Table: EXTR_UnitBreakdown
 #Keys: Major, Minor
 # All columns (['Major', 'Minor', 'UnitTypeItemId', 'NbrThisType', 'SqFt', 'NbrBedrooms', 'NbrBaths'],
-def get_unitbreakdown():
-    df_unit_breakdown = pd.read_csv('../data/EXTR_UnitBreakdown.csv', encoding = "ISO-8859-1", low_memory=False)
+def get_unit_breakdown():
+    df_unit_breakdown = parse_2019(pd.read_csv('data/EXTR_UnitBreakdown.csv', encoding = "ISO-8859-1", low_memory=False))
     print("EXTR_UnitBreakdown: ", df_unit_breakdown.shape)
     
     return df_unit_breakdown
+
+def get_LookUp():
+    df_unit_breakdown = parse_2019(pd.read_csv('data/EXTR_LookUp.csv', encoding = "ISO-8859-1", low_memory=False))
+    print("EXTR_LookUp: ", df_unit_breakdown.shape)
+    
+    return df_unit_breakdown
+
+def parse_2019(df):
+    if 'DocumentDate' in df.columns:
+        df = df[pd.to_datetime(df['DocumentDate']).dt.year == 2019 ]
+    elif 'ChangeDate' in df.columns:
+        df = df[df['ChangeDate'].astype(str).str[:4] == '2019']
+    df.reset_index(drop = True)
+    return df
