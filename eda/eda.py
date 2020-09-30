@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 import sys
+from sklearn.preprocessing import LabelEncoder
 
 # A function named parse_year(df, year) that takes a dataframe as the input.
 # It takes in a dataframe, looks for relevant columns, and then keeps the rows that
