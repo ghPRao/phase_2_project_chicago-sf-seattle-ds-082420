@@ -27,6 +27,7 @@ def merge_keys (df):
     del df['Major'], df['Minor']
     return df
 
+
     
 # Data File: EXTR_RPSale.csv 
 #Table: EXTR_RPSale 
