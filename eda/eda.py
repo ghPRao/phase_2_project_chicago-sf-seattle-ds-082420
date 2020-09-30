@@ -175,6 +175,7 @@ def consolidate_data(year=2019, create=False):
         
 
 # using label encoding, takes the categorical columns in a dataframe and turn them into numeric ones and returns a dataframe
+# it only changes categorical columns; some columns in the dataset are categorical but use numbers as categories, be sure to change them from int to strings first
 # inputs: a dataframe, and a boolean keep
 # setting it to True will keep the old categorical column, setting it to False will delete it
 
