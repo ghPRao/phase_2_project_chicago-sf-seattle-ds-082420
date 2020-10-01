@@ -15,17 +15,18 @@ def parse_year(df, year):
 # Funtion to pad zeros to Major, Minor columns, if the length is less than 
 # Major: Column 0; Minor: Column 1
 def pad_zeros_tokey(df):
-    df['Minor'] = df.Minor.astype(str).str.pad(6,fillchar='0')
+    df['Minor'] = df.Minor.astype(str).str.pad(4,fillchar='0')
     df['Major'] = df.Major.astype(str).str.pad(6,fillchar='0')
     return df
 
 #Combine Major+Minor in one column'Merged_Key' and drop Major, Minor columns
 def merge_keys (df):
-    df['Merged_Key'] = df['Major'] + df['Minor']
+    df['Merged_Key'] = df['Major'].map(str) + df['Minor'].map(str)
     df_t = df.pop('Merged_Key')
     df.insert(0, 'Merged_Key', df_t)
     del df['Major'], df['Minor']
     return df
+
     
 # Data File: EXTR_RPSale.csv 
 #Table: EXTR_RPSale 
@@ -53,7 +54,7 @@ def get_sales(year=2019):
     
     #Combine Major+Minor in one column'Merged_Key' and drop Major, Minor columns
     df = merge_keys(df)
-    print("Done eading Sales data....", df.shape)   
+    print("Sales file read....", df.shape)   
     return df
 
 #Data File: EXTR_Parcel.csv
@@ -68,25 +69,21 @@ def get_sales(year=2019):
 #       'OtherNuisances']
 def get_parcels():
     df = pd.read_csv('../data/EXTR_Parcel.csv', encoding = "ISO-8859-1", low_memory=False)
-    print("Before EXTR_Parcel.csv: ", df.shape)
-    df.columns
     
     # Filter the following columns from EXTR_Parcel table
     cols = list(df.columns)
     df = df[cols[:2] + cols[10:13] + cols[15:16] + cols[21:25] + cols[35:36]   + cols[37:49] + cols[50:54]] 
     
-    # Filter 'KING' county only
-    
     #Pad zeros to keys
     df = pad_zeros_tokey(df)
     
-    # Filter KING County only
+#     # Filter KING County only
 #     df = df[df['DistrictName'].str.contains('KING', na=False)]
 #     print( "After filtering KING county rows", df.shape)
     
     # Filter Proptype R:Residential; K:Condominium
     df = df[(df['PropType'] == 'R') | (df['PropType'] == 'K')]
-    print("Filtering Residential and Condo data....", df.shape)   
+    print("Parcel file read....", df.shape)   
     
     #Combine Major+Minor in one column'Merged_Key' and drop Major, Minor columns
     df = merge_keys(df)
@@ -117,7 +114,7 @@ def get_resBldg():
     #Combine Major+Minor in one column'Merged_Key' and drop Major, Minor columns
     df = merge_keys(df)
     
-    print("After reading EXTR_ResBldg.csv: ", df.shape)    
+    print("ResBldg file read....", df.shape)     
     return df
 
 #Data File: EXTR_LookUp.csv
@@ -126,9 +123,7 @@ def get_resBldg():
 # Selected Columns ['LUType', 'LUItem', 'LUDescription']
 def get_lookup():
     df = pd.read_csv('../data/EXTR_LookUp.csv', encoding = "ISO-8859-1", low_memory=False)
-
-    # Do n't filter records  
-    print("Done reading EXTR_LookUP.csv: ", df.shape)    
+ 
     return df
 
 #Read and return a LookUp description for a given LUType and LUItem
@@ -167,15 +162,26 @@ def consolidate_data(year=2019, create=False):
         df_lookup = get_lookup()
     
         #Merge df_sales, df_parcels, df_resbldg on keys Major and Minor
-        print("Merging....")
+        print("Merging data started....")
         df_merged = df_sales
-        df_merged = df_merged.merge(df_parcels, right_on=['Merged_Key'], left_on=['Merged_Key'], how='inner')
-        df_merged = df_merged.merge(df_resbldg, right_on=['Merged_Key'], left_on=['Merged_Key'], how='inner')          
-        print("After Merging files.csv: ", df_parcels.shape)   
-        print("Created merged file...s")
+        df_merged = df_merged.merge(df_parcels, on=['Merged_Key'],  how='inner')
+        df_merged = df_merged.merge(df_resbldg, on=['Merged_Key'],  how='inner')          
+
         df_merged.to_csv ('../data/consolidated.csv', index = False, header=True)
-        print("Merging....Done")        
+        print("Merging data ....done")        
     
     return df_merged
         
 
+# using label encoding, takes the categorical columns in a dataframe and turn them into numeric ones and returns a dataframe
+# inputs: a dataframe, and a boolean keep
+# setting it to True will keep the old categorical column, setting it to False will delete it
+
+def dummying_df(df, keep = True):
+    cols = df.select_dtypes(include = 'object').columns
+    label_encoder = LabelEncoder()
+    for col in cols:
+        status_labels = label_encoder.fit_transform(df[f"{col}"])
+        df[f"{col}_Encoded"] = status_labels
+        if keep == False: df.drop(columns = [col], inplace = True, errors = 'ignore')
+    return df
