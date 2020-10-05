@@ -1,14 +1,14 @@
 # Table of Contents
 ___
 ### Reports
-- [Factors Influencing Homesale Prices in King County Area] (./notebooks/reports/index.ipynb)
-- [Presentation] (./reports/King_County_Home_Sales.pdf)
+- [Factors Influencing Homesale Prices in King County Area](./notebooks/reports/index.ipynb)
+- [Presentation](./reports/King_County_Home_Sales.pdf)
 
 ### Exploratory Notebooks
-- [Data Cleanup] (./notebooks/exploratory/eda/EDA.ipynb)
-- [Influence of Waterfront and Porches on Homesale Price] (./notebooks/exploratory/eda/andrew_PR_EDA.ipynb)
-- [Influence of Traffic Noise on Homesale Price] (./notebooks/exploratory/eda/sam_traffic_noise.ipynb)
-- [Map Visualizations and Location of Housing by Price] (./notebooks/exploratory/eda/sam_mapping.ipynb)
+- [Data Cleanup](./notebooks/exploratory/eda/EDA.ipynb)
+- [Influence of Waterfront and Porches on Homesale Price](./notebooks/exploratory/eda/andrew_PR_EDA.ipynb)
+- [Influence of Traffic Noise on Homesale Price](./notebooks/exploratory/eda/sam_traffic_noise.ipynb)
+- [Map Visualizations and Location of Housing by Price](./notebooks/exploratory/eda/sam_mapping.ipynb)
 
 # Analysis
 __
