@@ -51,8 +51,8 @@ def get_sales(year=2019):
     get_Sales(year) method reads EXTR_RPSale.csv data and a subset view is returned as a dataframe.
     '''
     
-    print( "Reading Sales Data from ../../data/raw/EXTR_RPSale.csv ...")
-    df = pd.read_csv('../data/raw/EXTR_RPSale.csv', encoding = "ISO-8859-1", low_memory=False)
+    print( "Reading Sales Data from ./data/raw/EXTR_RPSale.csv ...")
+    df = pd.read_csv('./data/raw/EXTR_RPSale.csv', encoding = "ISO-8859-1", low_memory=False)
 
     # Filter the following columns from EXTR_RPsale table
     cols = list(df.columns)
