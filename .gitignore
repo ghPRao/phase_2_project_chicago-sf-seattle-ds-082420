@@ -3,7 +3,7 @@
 *.zip
 *.csv.gz
 *.gif
-*.yml
+*.xml
 
 # Shapefiles
 *.cpg
