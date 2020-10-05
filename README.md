@@ -1,18 +1,18 @@
 # Table of Contents
 
 ### Reports
-- [Factors Influencing Homesale Prices in King County Area] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/edit/master/notebooks/reports/index.ipynb "Report Notebook")
-- [Presentation] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/edit/master/reports/King_County_Home_Sales.pdf "Presentation Slides")
+- [Factors Influencing Homesale Prices in King County Area] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/master/notebooks/reports/index.ipynb "Report Notebook")
+- [Presentation] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/master/reports/King_County_Home_Sales.pdf "Presentation Slides")
 
 ### Exploratory Notebooks
-- [Data Cleanup] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/edit/master/notebooks/exploratory/eda/EDA.ipynb "Data Cleanup and Porch Influence")
-- [Influence of Waterfront and Porches on Homesale Price] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/edit/master/notebooks/exploratory/eda/andrew_PR_EDA.ipynb "Waterfront and Porches")
-- [Influence of Traffic Noise on Homesale Price] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/edit/master/notebooks/exploratory/eda/sam_traffic_noise.ipynb "Traffic Noise")
-- [Map Visualizations and Location of Housing by Price] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/edit/master/notebooks/exploratory/eda/sam_mapping.ipynb "Map Visualizations")
+- [Data Cleanup] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/master/notebooks/exploratory/eda/EDA.ipynb "Data Cleanup and Porch Influence")
+- [Influence of Waterfront and Porches on Homesale Price] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/master/notebooks/exploratory/eda/andrew_PR_EDA.ipynb "Waterfront and Porches")
+- [Influence of Traffic Noise on Homesale Price] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/master/notebooks/exploratory/eda/sam_traffic_noise.ipynb "Traffic Noise")
+- [Map Visualizations and Location of Housing by Price] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/master/notebooks/exploratory/eda/sam_mapping.ipynb "Map Visualizations")
 
-## Analysis
+# Analysis
 __
-The following contians analysis of select factors influencing homesale prices in the King County area. Influences explored in this report include the presence of waterfron ton the property, the existence of enclosed and open porches, and the influence of nuisances on homesale prices.
+The following contians analysis of select factors influencing homesale prices in the King County area. Influences explored in this report include the presence of waterfron ton the property, the existence of enclosed and open porches, and the influence of nuisances on homesale prices. Along with these explainations are visualizations to aid in understanding the magnitude and relevance of our findings.
 
 # Porches
 ---
