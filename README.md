@@ -11,7 +11,7 @@ ___
 - [Map Visualizations and Location of Housing by Price](./notebooks/exploratory/eda/sam_mapping.ipynb)
 
 # Analysis
-__
+___
 The following contians analysis of select factors influencing homesale prices in the King County area. Influences explored in this report include the presence of waterfron ton the property, the existence of enclosed and open porches, and the influence of nuisances on homesale prices. Along with these explanations are visualizations to aid in understanding the magnitude and relevance of our findings.
 
 # Porches
