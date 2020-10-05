@@ -5,17 +5,17 @@ import sys
 import chardet 
 from sklearn.preprocessing import LabelEncoder
 
-# #Find Encoding type of a file
-# def find_encoding(fn):
-#     rawdata = open(fn, 'rb').read()
-#     result = chardet.detect(rawdata)
-#     return result['encoding']
-
-
 # A function named parse_year(df, year) that takes a dataframe as the input.
 # It takes in a dataframe, looks for relevant columns, and then keeps the rows that
 # are in the year 2019.
 def parse_year(df, year):
+    '''    
+    Function: parse_year 
+    Parameters: df, year (dataframe, year in yyyy 
+    Returns dataframe 
+    Notes: parse_year method will modify 'DocumentDate' column and store it in yyyy format
+    '''
+    
     if 'DocumentDate' in df.columns:
         df = df[pd.to_datetime(df['DocumentDate']).dt.year == year ]
         df.loc[:,'DocumentDate'] = str(year)
@@ -24,31 +24,35 @@ def parse_year(df, year):
 # Funtion to pad zeros to Major, Minor columns, if the length is less than 
 # Major: Column 0; Minor: Column 1
 def pad_zeros_tokey(df):
+    '''
+    pad_zeros_tokey method pads 0's to Minor and Major columns
+    '''
+    
     df['Minor'] = df.Minor.astype(str).str.pad(4,fillchar='0')
     df['Major'] = df.Major.astype(str).str.pad(6,fillchar='0')
     return df
 
 #Combine Major+Minor in one column'Merged_Key' and drop Major, Minor columns
 def merge_keys (df):
+    '''    
+    merge_keys(df) merges columns 'Major' and 'Minor' and creates a new column Merged_Keys. 
+    Also, removes Major and Minor columns after the merge
+    '''
+    
     df['Merged_Key'] = df['Major'].map(str) + df['Minor'].map(str)
     df_t = df.pop('Merged_Key')
     df.insert(0, 'Merged_Key', df_t)
     del df['Major'], df['Minor']
     return df
 
-    
-# Data File: EXTR_RPSale.csv 
-#Table: EXTR_RPSale 
-#Keys: Major, Minorf
-#Selected Columns ['Major', 'Minor', 'DocumentDate', 'SalePrice', 'PropertyType',
-#       'PrincipalUse', 'PropertyClass']
-# Filters:
-#     1) Select only specified 'year' data
-#.    2) If 'SalesPrice' is 0, drop the records
 def get_sales(year=2019):
-
-    print( "Reading Sales Data from ./data/raw/EXTR_RPSale.csv ...")
-    df = pd.read_csv('./data/raw/EXTR_RPSale.csv', encoding = "ISO-8859-1", low_memory=False)
+    
+    '''     
+    get_Sales(year) method reads EXTR_RPSale.csv data and a subset view is returned as a dataframe.
+    '''
+    
+    print( "Reading Sales Data from ../../data/raw/EXTR_RPSale.csv ...")
+    df = pd.read_csv('../data/raw/EXTR_RPSale.csv', encoding = "ISO-8859-1", low_memory=False)
 
     # Filter the following columns from EXTR_RPsale table
     cols = list(df.columns)
@@ -58,7 +62,7 @@ def get_sales(year=2019):
     df = parse_year(df,year)
     
     #Drop zero SalePrice records
-    df = df[df['SalePrice'] != 0 ]
+    df = df[df['SalePrice'] > 0 ]
     
     #Pad zeros to keys
     df = pad_zeros_tokey(df)
@@ -79,6 +83,9 @@ def get_sales(year=2019):
 #       'TidelandShoreland', 'TrafficNoise', 'AirportNoise', 'PowerLines',
 #       'OtherNuisances']
 def get_parcels():
+    '''     
+    get_Sales(year) method reads EXTR_Parcel.csv data and a subset view is returned as a dataframe.
+    '''    
     print( "Reading Parcel Data from ./data/raw/EXTR_Parcel.csv ...")
     df = pd.read_csv('./data/raw/EXTR_Parcel.csv', encoding = "ISO-8859-1", low_memory=False)
     

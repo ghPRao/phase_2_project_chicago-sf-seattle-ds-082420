@@ -153,6 +153,4 @@ def porch_vs_house_price (df_porch):
     plt.savefig("./visualization/porch_vs_house_price.png") 
     
     return None
-
-# figure = ax.get_figure().savefig("porch_porch_area", dpi = 400, bbox_inches = "tight")
     
