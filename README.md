@@ -1,14 +1,14 @@
 # Table of Contents
-
+___
 ### Reports
-- [Factors Influencing Homesale Prices in King County Area] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/master/notebooks/reports/index.ipynb "Report Notebook")
-- [Presentation] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/master/reports/King_County_Home_Sales.pdf "Presentation Slides")
+- [Factors Influencing Homesale Prices in King County Area] (./notebooks/reports/index.ipynb)
+- [Presentation] (./reports/King_County_Home_Sales.pdf)
 
 ### Exploratory Notebooks
-- [Data Cleanup] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/master/notebooks/exploratory/eda/EDA.ipynb "Data Cleanup and Porch Influence")
-- [Influence of Waterfront and Porches on Homesale Price] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/master/notebooks/exploratory/eda/andrew_PR_EDA.ipynb "Waterfront and Porches")
-- [Influence of Traffic Noise on Homesale Price] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/master/notebooks/exploratory/eda/sam_traffic_noise.ipynb "Traffic Noise")
-- [Map Visualizations and Location of Housing by Price] (https://github.com/ghPRao/phase_2_project_chicago-sf-seattle-ds-082420/master/notebooks/exploratory/eda/sam_mapping.ipynb "Map Visualizations")
+- [Data Cleanup] (./notebooks/exploratory/eda/EDA.ipynb)
+- [Influence of Waterfront and Porches on Homesale Price] (./notebooks/exploratory/eda/andrew_PR_EDA.ipynb)
+- [Influence of Traffic Noise on Homesale Price] (./notebooks/exploratory/eda/sam_traffic_noise.ipynb)
+- [Map Visualizations and Location of Housing by Price] (./notebooks/exploratory/eda/sam_mapping.ipynb)
 
 # Analysis
 __
