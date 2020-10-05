@@ -12,7 +12,7 @@ ___
 
 # Analysis
 __
-The following contians analysis of select factors influencing homesale prices in the King County area. Influences explored in this report include the presence of waterfron ton the property, the existence of enclosed and open porches, and the influence of nuisances on homesale prices. Along with these explainations are visualizations to aid in understanding the magnitude and relevance of our findings.
+The following contians analysis of select factors influencing homesale prices in the King County area. Influences explored in this report include the presence of waterfron ton the property, the existence of enclosed and open porches, and the influence of nuisances on homesale prices. Along with these explanations are visualizations to aid in understanding the magnitude and relevance of our findings.
 
 # Porches
 ---
