@@ -5,6 +5,13 @@
 *.gif
 *.yml
 
+# Shapefiles
+*.cpg
+*.dbf
+*.prj
+*.shp
+*.shx
+
 # MacOS file
 .DS_Store
 
