@@ -21,7 +21,7 @@ Porches are a structure typically located near the front of a building, and are 
 
 As they are a popular commodity in many houses, we want to see how the price will change between a house that does have a porch and does not have a porch.
 
-<img src= ./reports/figures/porch_porch_area.png alt="Porch Graphic" style="width: 400px;"/>
+<img src= ./reports/figures/porch_porch_area.png alt="Porch Graphic" width= 400px>
 
 In the scatterplot above, we plot both the square feet of the house's enclosed porch area and their open porch area, and then classify their color based on their sale price,  with low-end housing at a gray color and luxury housing at a dark green color.  Common trends we can see are that the number of houses with an enclosed porch area is significantly less than houses with an open porch area.  We can assume this is so because of cheaper material costs as well as open porch areas being more aesthetically pleasing.  Another point we can take is that houses with porch size below 800 square feet, whether it be open porch or enclosed porch, have a wide variety of sale prices.  However the main point is that all houses with a large open porch area, or an open porch area above 800 square feet, are considered expensive housing.  With these points we can analzye that just having a porch does not correlate exactly to a high sale price, but you need a large porch to a certain degree.
 
